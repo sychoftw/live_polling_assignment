@@ -4,14 +4,25 @@ import { Server } from 'socket.io';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import { TeacherController } from "./controllers/teacherController"
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
+const CLIENT_ORIGIN = process.env.CLIENT_URL || "*";
+
 const io = new Server(server, {
-  cors: { origin: "*", methods: ["GET", "POST"] }
+  cors: {
+    origin: CLIENT_ORIGIN,
+    methods: ["GET", "POST"]
+  }
 });
 
-app.use(cors());
+app.use(cors({
+  origin: CLIENT_ORIGIN,
+  methods: ["GET", "POST"],
+}));
+
 app.use(express.json());
 
 
@@ -99,4 +110,5 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(4000, () => console.log("Server running at http://localhost:4000"));
+const PORT = process.env.PORT || 4000;
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

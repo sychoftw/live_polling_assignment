@@ -1,17 +1,17 @@
 {
-  "name": "new-folder-(2)",
+  "name": "live-polling-backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "dist/server.js", 
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@types/dotenv": "^6.1.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^5.1.0",
     "mongoose": "^8.15.1",
     "socket.io": "^4.8.1"
