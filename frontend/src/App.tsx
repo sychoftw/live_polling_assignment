@@ -1,5 +1,5 @@
 // src/App.tsx
-import React from "react";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import RoleSelection from "./pages/Roleselection"
 import StudentPage from "./pages/StudentPage";
